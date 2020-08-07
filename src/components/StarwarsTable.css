@@ -1,0 +1,14 @@
+.table-container {
+    display: flex;
+    background-color: #272b30;
+    height: 100vh;
+}
+.table-container-title {
+    display: flex;
+    justify-content: center;
+    width: 200%;
+    color: #ffe300;
+    font-size: 26px;
+    font-weight: 600;
+    padding: 25px;
+}

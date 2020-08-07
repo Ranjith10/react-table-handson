@@ -1,0 +1,47 @@
+{
+    "parser": "babel-eslint",
+    "extends": ["prettier", "eslint:recommended", "plugin:react/recommended"],
+    "plugins": ["prettier", "react", "react-hooks"],
+    "rules": {
+        "semi": "off",
+        "react-hooks/rules-of-hooks": "error", // Checks rules of Hooks
+        "react-hooks/exhaustive-deps": "warn",
+        "jsx-quotes": [2, "prefer-single"],
+        "react/jsx-curly-spacing": [
+            2,
+            {
+                "when": "always",
+                "spacing": {
+                    "objectLiterals": "never"
+                }
+            }
+        ],
+        "react/jsx-equals-spacing": [2, "always"],
+        "react/jsx-boolean-value": "error",
+        "react/jsx-closing-bracket-location": "error",
+        "react/jsx-first-prop-new-line": "error",
+        "react/jsx-curly-newline": "error",
+        "react/jsx-handler-names": "error",
+        "react/jsx-indent-props": ["error", 4],
+        "react/jsx-indent": ["error", 4],
+        "react/jsx-key": "error",
+        "react/jsx-max-props-per-line": ["error", { "maximum": 2 }],
+        "react/jsx-no-bind": "off",
+        "react/jsx-no-literals": "off",
+        "react/jsx-no-target-blank": "error",
+        "react/jsx-pascal-case": "error",
+        "react/jsx-sort-props": "error",
+        "react/jsx-space-before-closing": "error",
+        "react/prop-types": "off"
+    },
+    "env": {
+        "es6": true
+    },
+    "parserOptions": {
+        "ecmaVersion": 6,
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "jsx": true
+        }
+    }
+}
