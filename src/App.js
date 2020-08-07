@@ -4,9 +4,7 @@ import StarwarsTable from './components/StarwarsTable'
 
 function App() {
     return (
-        <div className='App'>
-            <StarwarsTable />
-        </div>
+        <StarwarsTable />
     )
 }
 

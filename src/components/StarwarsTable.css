@@ -1,14 +1,32 @@
 .table-container {
     display: flex;
+    flex-direction: column;
     background-color: #272b30;
-    height: 100vh;
+    min-height: 100vh;
+    padding: 25px;
+    width: calc(100% - 50px);
 }
 .table-container-title {
     display: flex;
     justify-content: center;
-    width: 200%;
+    width: 100%;
     color: #ffe300;
     font-size: 26px;
     font-weight: 600;
-    padding: 25px;
+}
+.people-table {
+    background-color: #f5f5f5;
+    margin: 30px;
+    border-radius: 10px;
+    padding: 20px;
+    width: calc(100% - 60px);
+}
+.people-table > thead > tr > th {
+    text-align: left;
+    text-transform: uppercase;
+    padding: 0 0 10px 0;
+    border-bottom: 1px solid;
+}
+.people-table > tbody > tr {
+    height: 60px;
 }

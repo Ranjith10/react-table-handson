@@ -19,7 +19,7 @@ const PeopleTable = ({columns, peopleList: data, peopleCount}) => {
 
     return (
         <>
-            <table { ...getTableProps }>
+            <table { ...getTableProps } className = 'people-table'>
                 <thead>
                     {
                         headerGroups.map((headerGroup, headerIndex) => (
@@ -27,9 +27,9 @@ const PeopleTable = ({columns, peopleList: data, peopleCount}) => {
                                 {
                                     headerGroup.headers.map((column, columnIndex) => {
                                         return (
-                                            <thead key = { columnIndex }>
+                                            <th key = { columnIndex }>
                                                 {column.render('Header')}
-                                            </thead>
+                                            </th>
                                         )
                                     })
                                 }
@@ -109,7 +109,7 @@ const StarwarsTable = () => {
 
     return (
         <div className = 'table-container'>
-            4<div className = 'table-container-title'>Star Wars People Table</div>
+            <div className = 'table-container-title'>Star Wars People </div>
             <PeopleTable 
                 columns = { columns }
                 peopleCount = { peopleCount }
