@@ -190,16 +190,13 @@ const StarwarsTable = () => {
     )
 
     return (
-        <div className = 'table-container'>
-            <div className = 'table-container-title'>Star Wars People </div>
-            <PeopleTable
-                columns = { columns }
-                fetchPeopleList = { fetchPeopleList }
-                isLoading = { isLoading }
-                pageCount = { pageCount }
-                peopleList = { peopleList }
-            />
-        </div>
+        <PeopleTable
+            columns = { columns }
+            fetchPeopleList = { fetchPeopleList }
+            isLoading = { isLoading }
+            pageCount = { pageCount }
+            peopleList = { peopleList }
+        />
     )
 }
 

@@ -1,0 +1,27 @@
+.app-container {
+    display: flex;
+    flex-direction: column;
+    background-color: #272b30;
+    padding: 25px;
+    width: calc(100% - 50px);
+}
+.app-container-title,
+.app-container-subtitle {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    color: #ffe300;
+    font-size: 26px;
+    font-weight: 600;
+}
+.app-container-subtitle {
+    font-size: 22px;
+}
+.app-content-listing {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+    padding: 100px;
+}
