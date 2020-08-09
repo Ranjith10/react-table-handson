@@ -1,9 +1,11 @@
 .app-container {
     display: flex;
     flex-direction: column;
+    align-items: center;
     background-color: #272b30;
     padding: 25px;
     width: calc(100% - 50px);
+    min-height: calc(100% - 50px);
 }
 .app-container-title,
 .app-container-subtitle {
@@ -20,8 +22,13 @@
 .app-content-listing {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 300px;
-    padding: 100px;
+    margin: 130px 0 0 0;
+    color: #ffffff;
+}
+.app-content-listing > a {
+    color: #ffffff;
+    font-size: 18px;
+    margin: 0 0 15px 0;
+    list-style: square;
+    text-decoration: none;
 }

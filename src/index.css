@@ -1,10 +1,18 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins');
 
+html {
+    height: 100%;
+}
+
 body {
     margin: 0;
+    height: 100%;
     font-family: Poppins;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+#root {
+    height: 100%;
 }
 * {
     margin: 0;

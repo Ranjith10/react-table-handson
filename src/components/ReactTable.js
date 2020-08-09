@@ -3,7 +3,7 @@ import Skeleton from 'react-loading-skeleton'
 import axios from 'axios'
 import { useTable, usePagination } from 'react-table'
 
-import './StarwarsTable.css'
+import './ReactTable.css'
 
 const PAGE_SIZE = 10
 
@@ -132,7 +132,7 @@ const PeopleTable = ({ columns, peopleList: data, isLoading, pageCount: controll
     )
 }
 
-const StarwarsTable = () => {
+const ReactTable = () => {
     const [peopleList, setPeopleList] = useState([])
     const [isLoading, setIsLoading] = useState(false)
     const [pageCount, setPageCount] = useState(0)
@@ -200,4 +200,4 @@ const StarwarsTable = () => {
     )
 }
 
-export default StarwarsTable
+export default ReactTable

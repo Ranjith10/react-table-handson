@@ -1,24 +1,20 @@
 import React from 'react'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 import TableContent from './components/TableContent'
-import StarwarsTable from './components/StarwarsTable'
+import TableWrapper from './components/TableWrapper'
 
 function App() {
     return (
         <Router>
-            <Route 
-                exact
-                path = '/'
-            >
-                <TableContent />
-            </Route>
-            <Route 
-                exact
-                path = 'react-table'
-            >
-                <StarwarsTable />
-            </Route>
+            <div className = 'app-container'>
+                <div className = 'app-container-title'>React Table</div>
+                <div className = 'app-container-subtitle'>Star Wars</div>
+                <Switch>
+                    <Route exact path = '/'><TableContent /></Route>
+                    <TableWrapper />
+                </Switch>
+            </div>
         </Router>
     )
 }
