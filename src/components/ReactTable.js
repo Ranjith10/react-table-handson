@@ -1,41 +1,27 @@
 import React, { useState, useEffect, useMemo, useCallback } from 'react'
 import Skeleton from 'react-loading-skeleton'
 import axios from 'axios'
-import { useTable, usePagination } from 'react-table'
+import { useTable } from 'react-table'
 
 import './ReactTable.css'
 
-const PAGE_SIZE = 10
-
-const PeopleTable = ({ columns, peopleList: data, isLoading, pageCount: controlledPageCount, fetchPeopleList }) => {
+const PlanetsTable = ({ columns, planetList: data, isLoading, fetchPlanetList }) => {
     const {
         getTableProps,
         getTableBodyProps,
         headerGroups,
         rows,
         prepareRow,
-        canPreviousPage,
-        canNextPage,
-        pageCount,
-        gotoPage,
-        nextPage,
-        previousPage,
-        // setPageSize,
-        pageOptions,
-        state: { pageIndex, pageSize },
     } = useTable(
         {
             columns,
             data,
-            manualPagination: true,
-            pageCount: controlledPageCount
         },
-        usePagination
     )
     
     useEffect(() => {
-        fetchPeopleList({pageIndex, pageSize})
-    },[fetchPeopleList, pageIndex, pageSize])
+        fetchPlanetList()
+    },[fetchPlanetList])
 
     return (
         <div className = 'people-table'>
@@ -76,83 +62,32 @@ const PeopleTable = ({ columns, peopleList: data, isLoading, pageCount: controll
                 </tbody>
             </table>
             {
-                !isLoading && 
-                <div className = 'pagination'>
-                    <button disabled = { !canPreviousPage } onClick = { () => gotoPage(0) }>
-                        {'<<'}
-                    </button>{' '}
-                    <button disabled = { !canPreviousPage } onClick = { () => previousPage() }>
-                        {'<'}
-                    </button>{' '}
-                    <button disabled = { !canNextPage } onClick = { () => nextPage() }>
-                        {'>'}
-                    </button>{' '}
-                    <button disabled = { !canNextPage } onClick = { () => gotoPage(pageCount - 1) }>
-                        {'>>'}
-                    </button>{' '}
-                    <span>
-                        Page{' '}
-                        <strong>
-                            {pageIndex + 1} of {pageOptions.length}
-                        </strong>{' '}
-                    </span>
-                    {/* <span>
-                        | Go to page:{' '}
-                        <input
-                            defaultValue = { pageIndex + 1 }
-                            onChange = { e => {
-                                const page = e.target.value ? Number(e.target.value) - 1 : 0
-                                gotoPage(page)
-                            } }
-                            style = {{ width: '100px' }}
-                            type = 'number'
-                        />
-                    </span>{' '}
-                    <select
-                        onChange = { e => {
-                            setPageSize(Number(e.target.value))
-                        } }
-                        value = { pageSize }
-                    >
-                        {[10, 20, 30, 40, 50].map(pageSize => (
-                            <option key = { pageSize } value = { pageSize }>
-                                Show {pageSize}
-                            </option>
-                        ))}
-                    </select> */}
-                </div>
-            }
-            {
             isLoading && <Skeleton
                 count = { 10 } height = { 50 }
                 width = { '100%' }
                          />
-        }
+            }
         </div>
     )
 }
 
 const ReactTable = () => {
-    const [peopleList, setPeopleList] = useState([])
+    const [planetList, setPlanetList] = useState([])
     const [isLoading, setIsLoading] = useState(false)
-    const [pageCount, setPageCount] = useState(0)
 
-    let fetchPeopleList = useCallback(({ pageIndex }) => {
-        let fetchPeople = async (pageIndex) => {
+    let fetchPlanetList = useCallback(() => {
+        let fetchPlanet = async () => {
             try {
                 setIsLoading(true)
-                let response = await axios.get(`https://swapi.dev/api/people/?page=${pageIndex+1}`)
-                setPeopleList(response.data.results)
-                let count = response.data.count
-                let controlledPageCount = Math.ceil(count/ PAGE_SIZE)
-                setPageCount(controlledPageCount)
+                let response = await axios.get(`https://swapi.dev/api/planets/`)
+                setPlanetList(response.data.results)
                 setIsLoading(false)
             } catch (err) {
                 // eslint-disable-next-line no-undef
                 console.log('Error:', err)
             }
         }
-        fetchPeople(pageIndex)
+        fetchPlanet()
     },[]) 
 
     let columns = useMemo(
@@ -162,40 +97,39 @@ const ReactTable = () => {
                 accessor: 'name',
             },
             {
-                Header: 'Gender',
-                accessor: 'gender',
+                Header: 'Climate',
+                accessor: 'climate',
             },
             {
-                Header: 'Height',
-                accessor: 'height',
+                Header: 'Diameter',
+                accessor: 'diameter',
             },
             {
-                Header: 'Mass',
-                accessor: 'mass',
+                Header: 'Gravity',
+                accessor: 'gravity',
             },
             {
-                Header: 'Hair Color',
-                accessor: 'hair_color',
+                Header: 'Population',
+                accessor: 'population',
             },
             {
-                Header: 'Skin Color',
-                accessor: 'skin_color',
+                Header: 'Terrain',
+                accessor: 'terrain',
             },
             {
-                Header: 'Eye Color',
-                accessor: 'eye_color',
+                Header: 'Surface Water',
+                accessor: 'surface_water',
             },
         ],
         [],
     )
 
     return (
-        <PeopleTable
+        <PlanetsTable
             columns = { columns }
-            fetchPeopleList = { fetchPeopleList }
+            fetchPlanetList = { fetchPlanetList }
             isLoading = { isLoading }
-            pageCount = { pageCount }
-            peopleList = { peopleList }
+            planetList = { planetList }
         />
     )
 }
