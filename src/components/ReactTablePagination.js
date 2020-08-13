@@ -35,7 +35,7 @@ const FilmsTable = ({ columns, filmsList: data, isLoading, fetchFilmsList }) => 
 
     return (
         <div className = 'people-table'>
-            <table { ...getTableProps }>
+            <table { ...getTableProps() }>
                 <thead>
                     {headerGroups.map((headerGroup, headerIndex) => (
                         <tr
@@ -44,7 +44,7 @@ const FilmsTable = ({ columns, filmsList: data, isLoading, fetchFilmsList }) => 
                         >
                             {headerGroup.headers.map((column, columnIndex) => {
                             return (
-                                <th key = { columnIndex }>
+                                <th key = { columnIndex } { ...column.getHeaderProps() }>
                                     {column.render('Header')}
                                 </th>
                             )
@@ -52,7 +52,7 @@ const FilmsTable = ({ columns, filmsList: data, isLoading, fetchFilmsList }) => 
                         </tr>
                 ))}
                 </thead>
-                <tbody { ...getTableBodyProps }>
+                <tbody { ...getTableBodyProps() }>
                     {!isLoading && (
                     page.map((row, rowIndex) => {
                         prepareRow(row)

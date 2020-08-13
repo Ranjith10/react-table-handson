@@ -25,7 +25,7 @@ const PlanetsTable = ({ columns, planetList: data, isLoading, fetchPlanetList })
 
     return (
         <div className = 'people-table'>
-            <table { ...getTableProps }>
+            <table { ...getTableProps() }>
                 <thead>
                     {headerGroups.map((headerGroup, headerIndex) => (
                         <tr
@@ -34,7 +34,7 @@ const PlanetsTable = ({ columns, planetList: data, isLoading, fetchPlanetList })
                         >
                             {headerGroup.headers.map((column, columnIndex) => {
                             return (
-                                <th key = { columnIndex }>
+                                <th key = { columnIndex } { ...column.getHeaderProps() }>
                                     {column.render('Header')}
                                 </th>
                             )
@@ -42,7 +42,7 @@ const PlanetsTable = ({ columns, planetList: data, isLoading, fetchPlanetList })
                         </tr>
                 ))}
                 </thead>
-                <tbody { ...getTableBodyProps }>
+                <tbody { ...getTableBodyProps() }>
                     {!isLoading && (
                     rows.map((row, rowIndex) => {
                         prepareRow(row)

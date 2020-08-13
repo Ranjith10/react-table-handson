@@ -39,7 +39,7 @@ const PeopleTable = ({ columns, peopleList: data, isLoading, pageCount: controll
 
     return (
         <div className = 'people-table'>
-            <table { ...getTableProps }>
+            <table { ...getTableProps() }>
                 <thead>
                     {headerGroups.map((headerGroup, headerIndex) => (
                         <tr
@@ -48,7 +48,7 @@ const PeopleTable = ({ columns, peopleList: data, isLoading, pageCount: controll
                         >
                             {headerGroup.headers.map((column, columnIndex) => {
                             return (
-                                <th key = { columnIndex }>
+                                <th key = { columnIndex } { ...column.getHeaderProps() }>
                                     {column.render('Header')}
                                 </th>
                             )
@@ -56,7 +56,7 @@ const PeopleTable = ({ columns, peopleList: data, isLoading, pageCount: controll
                         </tr>
                 ))}
                 </thead>
-                <tbody { ...getTableBodyProps }>
+                <tbody { ...getTableBodyProps() }>
                     {!isLoading && (
                     page.map((row, rowIndex) => {
                         prepareRow(row)
