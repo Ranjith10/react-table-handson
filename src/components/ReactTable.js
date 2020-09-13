@@ -1,11 +1,36 @@
 import React, { useState, useEffect, useMemo, useCallback } from 'react'
 import Skeleton from 'react-loading-skeleton'
 import axios from 'axios'
-import { useTable } from 'react-table'
+import { useTable, useFilters } from 'react-table'
 
 import './ReactTable.css'
 
 const PlanetsTable = ({ columns, planetList: data, isLoading, fetchPlanetList }) => {
+    
+    function DefaultColumnFilter({
+        column: { filterValue, preFilteredRows, setFilter },
+      }) {
+        const count = preFilteredRows.length
+      
+        return (
+            <input
+                onChange = { e => {
+              setFilter(e.target.value || undefined) // Set undefined to remove the filter entirely
+            } }
+                placeholder = { `Search ${count} records...` }
+                value = { filterValue || '' }
+            />
+        )
+    }
+
+    const defaultColumn = React.useMemo(
+        () => ({
+          // Let's set up our default Filter UI
+          Filter: DefaultColumnFilter,
+        }),
+        []
+    )
+    
     const {
         getTableProps,
         getTableBodyProps,
@@ -16,7 +41,9 @@ const PlanetsTable = ({ columns, planetList: data, isLoading, fetchPlanetList })
         {
             columns,
             data,
+            defaultColumn,
         },
+        useFilters
     )
     
     useEffect(() => {
@@ -34,8 +61,12 @@ const PlanetsTable = ({ columns, planetList: data, isLoading, fetchPlanetList })
                         >
                             {headerGroup.headers.map((column, columnIndex) => {
                             return (
-                                <th key = { columnIndex } { ...column.getHeaderProps() }>
+                                <th
+                                    key = { columnIndex } { ...column.getHeaderProps() }
+                                    width = { column.width }
+                                >
                                     {column.render('Header')}
+                                    <div>{column.canFilter ? column.render('Filter') : null}</div>
                                 </th>
                             )
                         })}
@@ -95,30 +126,42 @@ const ReactTable = () => {
             {
                 Header: 'Name',
                 accessor: 'name',
+                width: '20%',
             },
             {
                 Header: 'Climate',
                 accessor: 'climate',
+                width: '15%',
             },
             {
                 Header: 'Diameter',
                 accessor: 'diameter',
+                width: '10%',
+                disableFilters: true
             },
             {
                 Header: 'Gravity',
                 accessor: 'gravity',
+                width: '15%',
+                disableFilters: true
             },
             {
                 Header: 'Population',
                 accessor: 'population',
+                width: '15%',
+                disableFilters: true
             },
             {
                 Header: 'Terrain',
                 accessor: 'terrain',
+                width: '13%',
+                disableFilters: true
             },
             {
                 Header: 'Surface Water',
                 accessor: 'surface_water',
+                width: '12%',
+                disableFilters: true
             },
         ],
         [],
