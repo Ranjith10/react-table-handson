@@ -8,6 +8,7 @@ import GenericNotFound from '../GenericNotFound'
 import ReactTablePagination from './ReactTablePagination'
 import ReactTableSortingColumn from './ReactTableSortingColumns'
 import './TableWrapper.css'
+import ReactTableFiltering from './ReactTableFiltering.'
 
 const TableWrapper = () => {
     const history = useHistory()
@@ -27,6 +28,7 @@ const TableWrapper = () => {
                 <Route exact path = '/react-table-controlled-pagination'><ReactTableControlledPagination /></Route>
                 <Route exact path = '/react-table-pagination'><ReactTablePagination /></Route>
                 <Route exact path = '/react-table-sorting'><ReactTableSortingColumn /></Route>
+                <Route exact path = '/react-table-filtering'><ReactTableFiltering /></Route>
                 <Route exact path = '/'><TableContent /></Route>      
                 <Route path = '*'> <GenericNotFound /> </Route>
             </Switch>

@@ -1,11 +1,35 @@
 import React, { useState, useEffect, useMemo, useCallback } from 'react'
 import Skeleton from 'react-loading-skeleton'
 import axios from 'axios'
-import { useTable } from 'react-table'
+import { useTable, useFilters } from 'react-table'
 
 import './ReactTable.css'
 
 const PlanetsTable = ({ columns, planetList: data, isLoading, fetchPlanetList }) => {
+    
+    function DefaultColumnFilter({
+        column: { filterValue, preFilteredRows, setFilter },
+      }) {
+        const count = preFilteredRows.length
+      
+        return (
+            <input
+                onChange = { e => {
+              setFilter(e.target.value || undefined) // Set undefined to remove the filter entirely
+            } }
+                placeholder = { `Search ${count} records...` }
+                value = { filterValue || '' }
+            />
+        )
+    }
+
+    const defaultColumn = React.useMemo(
+        () => ({
+          // Let's set up our default Filter UI
+          Filter: DefaultColumnFilter,
+        }),
+        []
+    )
     
     const {
         getTableProps,
@@ -17,7 +41,9 @@ const PlanetsTable = ({ columns, planetList: data, isLoading, fetchPlanetList })
         {
             columns,
             data,
+            defaultColumn,
         },
+        useFilters
     )
     
     useEffect(() => {
@@ -40,6 +66,7 @@ const PlanetsTable = ({ columns, planetList: data, isLoading, fetchPlanetList })
                                     width = { column.width }
                                 >
                                     {column.render('Header')}
+                                    <div>{column.canFilter ? column.render('Filter') : null}</div>
                                 </th>
                             )
                         })}
@@ -75,7 +102,7 @@ const PlanetsTable = ({ columns, planetList: data, isLoading, fetchPlanetList })
     )
 }
 
-const ReactTable = () => {
+const ReactTableFiltering = () => {
     const [planetList, setPlanetList] = useState([])
     const [isLoading, setIsLoading] = useState(false)
 
@@ -150,4 +177,4 @@ const ReactTable = () => {
     )
 }
 
-export default ReactTable
+export default ReactTableFiltering
