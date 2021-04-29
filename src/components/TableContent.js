@@ -12,6 +12,7 @@ const TableContent = () => {
             <NavLink to = '/react-table-sorting'>React Table - Sorting Columns</NavLink>
             <NavLink to = '/react-table-filtering'>React Table - Filtering </NavLink>
             <NavLink to = '/react-table-controlled-filtering'>React Table - Server side Filtering </NavLink>            
+            <NavLink to = '/react-table-column-hiding'>React Table - Column Hiding </NavLink>
             <NavLink to = '/react-table-vitualized-rows'>React Table - Virtualized Rows </NavLink>
         </div>
     )
