@@ -11,6 +11,7 @@ import './TableWrapper.css'
 import ReactTableFiltering from './ReactTableFiltering.'
 import ReactTableControlledFiltering from './ReactTableControlledFiltering'
 import ReactTableColumnHiding from './ReactTableColumnHiding'
+import ReactTableEditableCells from './ReactTableEditableCells'
 
 const TableWrapper = () => {
     const history = useHistory()
@@ -33,6 +34,7 @@ const TableWrapper = () => {
                 <Route exact path = '/react-table-filtering'><ReactTableFiltering /></Route>
                 <Route exact path = '/react-table-controlled-filtering'><ReactTableControlledFiltering /></Route>
                 <Route exact path = '/react-table-column-hiding'><ReactTableColumnHiding /></Route>
+                <Route exact path = '/react-table-cell-editing'><ReactTableEditableCells /></Route>
                 <Route exact path = '/'><TableContent /></Route>      
                 <Route path = '*'> <GenericNotFound /> </Route>
             </Switch>

@@ -9,7 +9,7 @@ function App() {
         <Router>
             <div className = 'app-container'>
                 <div className = 'app-container-title'>React Table</div>
-                <div className = 'app-container-subtitle'>Star Wars Powered By Swapi API</div>
+                <div className = 'app-container-subtitle'>Powered By Swapi API</div>
                 <Switch>
                     <Route exact path = '/'><TableContent /></Route>
                     <TableWrapper />

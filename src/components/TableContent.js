@@ -13,6 +13,7 @@ const TableContent = () => {
             <NavLink to = '/react-table-filtering'>React Table - Filtering </NavLink>
             <NavLink to = '/react-table-controlled-filtering'>React Table - Server side Filtering </NavLink>            
             <NavLink to = '/react-table-column-hiding'>React Table - Column Hiding </NavLink>
+            <NavLink to = '/react-table-cell-editing'>React Table - Editable Cells </NavLink>
             <NavLink to = '/react-table-vitualized-rows'>React Table - Virtualized Rows </NavLink>
         </div>
     )
