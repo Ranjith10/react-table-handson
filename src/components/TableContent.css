@@ -22,7 +22,7 @@
 .app-content-listing {
     display: flex;
     flex-direction: column;
-    margin: 130px 0 0 0;
+    margin: 30px 0 0 0;
     color: #ffffff;
 }
 .app-content-listing > a {
