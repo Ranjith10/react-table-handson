@@ -6,6 +6,14 @@ import { useTable, useSortBy } from 'react-table'
 import './ReactTable.css'
 
 const PlanetsTable = ({ columns, planetList: data, isLoading, fetchPlanetList }) => {
+    
+    const memoizedSort = (() => [
+        {
+            id: 'name',
+            desc: false,
+        }
+    ], [])    
+
     const {
         getTableProps,
         getTableBodyProps,
@@ -16,6 +24,10 @@ const PlanetsTable = ({ columns, planetList: data, isLoading, fetchPlanetList })
         {
             columns,
             data,
+            initialState: {
+                sortBy: memoizedSort
+            },
+            disableSortRemove: true,
         },
         useSortBy
     )
